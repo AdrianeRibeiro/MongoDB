@@ -1,0 +1,17 @@
+db.alunos.update(
+  {"_id": ObjectId("607c445c5e025d5f4cd4ce92")},
+  {
+    $push: {
+      notas: 8.5
+    }
+  }
+)
+
+db.alunos.update(
+  {"_id": ObjectId("607c445c5e025d5f4cd4ce92")},
+  {
+    $push: {
+      notas: { $each: [8.5, 3] }
+    }
+  }
+)

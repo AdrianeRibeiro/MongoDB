@@ -1,0 +1,49 @@
+db.alunos.find({nome: "Felipe"}).pretty()
+
+db.alunos.update(
+  { "_id" : ObjectId("607c445c5e025d5f4cd4ce92") },
+  {
+    $set: {
+      "localização": {
+        "endereco": "Rua Vergueiro, 3185",
+        "cidade": "São Paulo",
+        "coordinates": [-23.588213, -46.632356],
+        "type": "Point"
+      }
+    }
+  }
+)
+
+db.alunos.update(
+  { "_id" : ObjectId("607c724f5e025d5f4cd4ce9a") },
+  {
+    $set: {
+      "localização": {
+        "endereco": "Rua Vergueiro, 3185",
+        "cidade": "São Paulo",
+        "coordinates": [-23.588212, -46.632357],
+        "type": "Point"
+      }
+    }
+  }
+)
+
+//não funciona
+db.alunos.aggregate([
+  {
+    $geoNear: {
+      near: {
+        coordinates: [-23.5640265, -46.6527128],
+        type: "Point"
+      },
+      distanceField: "distancia.calculada",
+      spherical: true,
+      num: 2
+    }
+  }
+])
+
+db.alunos.createIndex({
+  localizacao: "2dsphere"
+})
+

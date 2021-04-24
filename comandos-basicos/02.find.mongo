@@ -1,0 +1,35 @@
+// SELECT * FROM alunos WHERE nome = "Felipe";
+
+db.alunos.find({
+  nome: "Felipe"
+}).pretty()
+
+
+/* SELECT a.* 
+  FROM habilidades as h
+  JOIN alunos as a ON a.id = h.aluno_id
+  WHERE h.nome = "inglês" and a.nome = Felipe;
+*/
+
+db.alunos.find({
+  "nome": "Felipe",
+  "habilidades.nome": "inglês"
+}).pretty()
+
+
+db.alunos.find({
+  $or: [
+    { "curso.nome": "Sistemas de informação"}, 
+    { "curso.nome": "Engenharia Química" },
+    { "curso.nome": "Moda" }
+  ],
+  "nome": "Daniela"
+}).pretty()
+
+
+db.alunos.find({
+  "curso.nome": { 
+    $in: ["Sistemas de informação", "Engenharia Química"]
+  }
+}).pretty()
+

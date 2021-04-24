@@ -1,0 +1,20 @@
+db.alunos.find({
+  "notas": 8.5
+})
+
+//greater than -> gt
+db.alunos.find({
+  "notas": { $gt: 5 }
+})
+
+//greater than -> gt
+db.alunos.findOne({
+  "notas": { $gt: 5 }
+})
+
+//sort - ordena
+// 1 - crescente, -1 - decrescente
+db.alunos.find().sort({"nome": 1})
+db.alunos.find().sort({"nome": -1})
+
+db.alunos.find().sort({"nome": -1}).limit(3)

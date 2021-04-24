@@ -1,0 +1,13 @@
+db.autores.find({ "artigos.slug": "projeto-caelum-nas-faculdades"})
+
+
+//1 é para exibir o campo
+db.autores.find(
+  { "artigos.slug": "projeto-caelum-nas-faculdades"}, 
+  { "artigos.titulo": 1, "artigos.conteudo": 1 }
+)
+
+db.autores.find(
+  { "nome": "Adriane Ribeiro"}, 
+  { "artigos.titulo": 1, "artigos.conteudo": 1 }
+)

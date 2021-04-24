@@ -1,0 +1,39 @@
+
+//tira um comentário
+db.artigos.update(
+  { slug: "visualizando-dados-de-frequencia" },
+  { 
+    $pop: {
+      comentarios: 1
+    }
+  }
+)
+
+// adiciona o comentário na primeira posição
+var documento = db.artigos.findOneAndUpdate(
+  { slug: "visualizando-dados-de-frequencia" },
+  {
+    $push: {
+      comentarios: {
+        $each: [
+          {
+            nome: "Adriane",
+            email: "adriane@gmail.com",
+            texto: "Gostei do artigo",
+            data: ISODate('2019-09-24')
+          }
+        ],
+        $position: 0
+      }
+    }
+  },
+  { returnNewDocument: true }
+)
+
+db.comentarios.insertOne({
+  id_artigo: documento._id,
+  nome: "Adriane",
+  email: "adriane@gmail.com",
+  texto: "Gostei do artigo",
+  data: ISODate('2019-09-24')
+})

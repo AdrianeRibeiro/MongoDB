@@ -1,0 +1,34 @@
+db.lojas.insertOne({
+  nome: "Apple Store",
+  endereco: "Av Roque Petroni Junior, 1080"
+})
+
+var magazineLuiza = db.lojas.findOne({
+  nome: "Magazine Luiza"
+})
+
+var fastShop = db.lojas.findOne({
+  nome: "Fast Shop"
+})
+
+db.produtos.update({
+  modelo: "Moto G7"
+},
+{
+  $set: {
+    vendido_em: [magazineLuiza._id, fastShop._id]
+  }
+})
+
+
+var iphone11 = db.produtos.findOne({ modelo: "iPhone 11" })
+var iphone8 = db.produtos.findOne({ modelo: "iPhone 8" })
+
+db.lojas.update(
+  { nome: "Apple Store" },
+  {
+    $set: {
+      produtos: [iphone11._id, iphone8._id]
+    }
+  }
+)

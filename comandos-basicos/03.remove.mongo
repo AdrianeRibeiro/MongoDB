@@ -1,0 +1,5 @@
+db.alunos.find()
+
+db.alunos.remove({
+  "_id": ObjectId("607c68a75e025d5f4cd4ce97")
+})

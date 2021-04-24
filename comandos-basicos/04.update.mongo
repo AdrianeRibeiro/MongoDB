@@ -1,0 +1,23 @@
+//UPDATE cursos SET nome = "Sistemas de informação" WHERE nome = "Sistema de informação"
+
+db.alunos.update(
+  {"curso.nome": "Sistema de informação"},
+  {
+    $set: {
+      "curso.nome": "Sistemas de informação"
+    }
+  }
+)
+
+db.alunos.update(
+  {"curso.nome": "Sistemas de Informação"},
+  {
+    $set: {
+      "curso.nome": "Sistemas De Informação"
+    }
+  },
+  {
+    multi: true
+  }
+)
+

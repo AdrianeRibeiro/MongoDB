@@ -1,0 +1,17 @@
+
+db.autores.update(
+
+  { nome: "Adriane Ribeiro" },
+  {
+    $set: {
+      artigos: [
+        {
+          slug: "projeto-caelum-nas-faculdades",
+          titulo: "Projeto Caelum Nas Faculdades",
+          conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.",
+          dataCriado: ISODate("2019-06-04")
+        }
+      ]
+    }
+  }
+)

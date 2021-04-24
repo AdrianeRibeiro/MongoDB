@@ -1,0 +1,7 @@
+
+db.autores.insertOne({
+  nome: "Adriane Ribeiro",
+  descricao: "Desenvolvedora Web",
+  email: "adrianeribeiro94@gmail.com",
+  senha: "123456"
+})

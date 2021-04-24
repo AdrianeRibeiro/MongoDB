@@ -1,0 +1,19 @@
+db.infoAutores.update(
+  { nome: "Adriane Ribeiro"},
+  {
+    $set: {
+      nome: "Adriana Ribeiro"
+    }
+  },
+  { multi: true }
+)
+
+db.artigos.update(
+  { "autor.nome": "Adriane Ribeiro"},
+  {
+    $set: {
+      "autor.nome": "Adriana Ribeiro"
+    }
+  },
+  { multi: true }
+)
